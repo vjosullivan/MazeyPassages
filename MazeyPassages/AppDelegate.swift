@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let maze1 = BinaryTreeMaze(rows: 10, cols: 20)
+        print(maze1.description)
+        let maze2 = SideWinderMaze(rows: 10, cols: 20)
+        print(maze2.description)
+
         return true
     }
 

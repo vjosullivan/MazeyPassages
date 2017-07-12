@@ -13,6 +13,11 @@
 		F143A9D21F15667A00E5A276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F143A9D11F15667A00E5A276 /* Assets.xcassets */; };
 		F143A9D51F15667A00E5A276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F143A9D31F15667A00E5A276 /* LaunchScreen.storyboard */; };
 		F143A9E01F15667B00E5A276 /* MazeyPassagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F143A9DF1F15667B00E5A276 /* MazeyPassagesTests.swift */; };
+		F1D14ACF1F1663370088D46A /* BinaryTreeMaze.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D14ACE1F1663370088D46A /* BinaryTreeMaze.swift */; };
+		F1D14AD21F1663620088D46A /* MazeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D14AD11F1663620088D46A /* MazeTests.swift */; };
+		F1D14AD41F166A400088D46A /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D14AD31F166A400088D46A /* Cell.swift */; };
+		F1D14AD61F166A5B0088D46A /* CellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D14AD51F166A5B0088D46A /* CellTests.swift */; };
+		F1D14ADA1F16CD930088D46A /* SideWinderMaze.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D14AD91F16CD930088D46A /* SideWinderMaze.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,11 @@
 		F143A9DB1F15667B00E5A276 /* MazeyPassagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazeyPassagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F143A9DF1F15667B00E5A276 /* MazeyPassagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeyPassagesTests.swift; sourceTree = "<group>"; };
 		F143A9E11F15667B00E5A276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1D14ACE1F1663370088D46A /* BinaryTreeMaze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTreeMaze.swift; sourceTree = "<group>"; };
+		F1D14AD11F1663620088D46A /* MazeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeTests.swift; sourceTree = "<group>"; };
+		F1D14AD31F166A400088D46A /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		F1D14AD51F166A5B0088D46A /* CellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTests.swift; sourceTree = "<group>"; };
+		F1D14AD91F16CD930088D46A /* SideWinderMaze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideWinderMaze.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +100,7 @@
 		F143A9DE1F15667B00E5A276 /* MazeyPassagesTests */ = {
 			isa = PBXGroup;
 			children = (
+				F1D14AD01F1663460088D46A /* Maze MVC */,
 				F143A9DF1F15667B00E5A276 /* MazeyPassagesTests.swift */,
 				F143A9E11F15667B00E5A276 /* Info.plist */,
 			);
@@ -100,6 +111,18 @@
 			isa = PBXGroup;
 			children = (
 				F143A9CC1F15667A00E5A276 /* MazeViewController.swift */,
+				F1D14ACE1F1663370088D46A /* BinaryTreeMaze.swift */,
+				F1D14AD31F166A400088D46A /* Cell.swift */,
+				F1D14AD91F16CD930088D46A /* SideWinderMaze.swift */,
+			);
+			path = "Maze MVC";
+			sourceTree = "<group>";
+		};
+		F1D14AD01F1663460088D46A /* Maze MVC */ = {
+			isa = PBXGroup;
+			children = (
+				F1D14AD11F1663620088D46A /* MazeTests.swift */,
+				F1D14AD51F166A5B0088D46A /* CellTests.swift */,
 			);
 			path = "Maze MVC";
 			sourceTree = "<group>";
@@ -206,7 +229,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F143A9CD1F15667A00E5A276 /* MazeViewController.swift in Sources */,
+				F1D14AD41F166A400088D46A /* Cell.swift in Sources */,
+				F1D14ADA1F16CD930088D46A /* SideWinderMaze.swift in Sources */,
 				F143A9CB1F15667A00E5A276 /* AppDelegate.swift in Sources */,
+				F1D14ACF1F1663370088D46A /* BinaryTreeMaze.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +240,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1D14AD21F1663620088D46A /* MazeTests.swift in Sources */,
+				F1D14AD61F166A5B0088D46A /* CellTests.swift in Sources */,
 				F143A9E01F15667B00E5A276 /* MazeyPassagesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +454,7 @@
 				F143A9E61F15667B00E5A276 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F143A9E71F15667B00E5A276 /* Build configuration list for PBXNativeTarget "MazeyPassagesTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +463,7 @@
 				F143A9E91F15667B00E5A276 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
