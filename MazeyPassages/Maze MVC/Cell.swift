@@ -42,11 +42,11 @@ class Cell {
     ///   - bidirectional: `true` (default) if a link back from the other `Cell` is
     ///                    required, otherwise `false`.
     ///
-    public func link(_ otherCell: Cell, bidirectional: Bool = true) {
+    public func link(to otherCell: Cell, bidirectional: Bool = true) {
         if !links.contains { $0 == otherCell } {
             links.append(otherCell)
             if bidirectional {
-                otherCell.link(self, bidirectional: false)
+                otherCell.link(to: self, bidirectional: false)
             }
         }
     }

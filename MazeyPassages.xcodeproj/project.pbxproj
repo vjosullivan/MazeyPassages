@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F10703191F1723E700490A29 /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10703181F1723E700490A29 /* Maze.swift */; };
+		F107031B1F172F3D00490A29 /* MazeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107031A1F172F3D00490A29 /* MazeGenerator.swift */; };
 		F143A9CB1F15667A00E5A276 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F143A9CA1F15667A00E5A276 /* AppDelegate.swift */; };
 		F143A9CD1F15667A00E5A276 /* MazeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F143A9CC1F15667A00E5A276 /* MazeViewController.swift */; };
 		F143A9D01F15667A00E5A276 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F143A9CE1F15667A00E5A276 /* Main.storyboard */; };
 		F143A9D21F15667A00E5A276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F143A9D11F15667A00E5A276 /* Assets.xcassets */; };
 		F143A9D51F15667A00E5A276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F143A9D31F15667A00E5A276 /* LaunchScreen.storyboard */; };
 		F143A9E01F15667B00E5A276 /* MazeyPassagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F143A9DF1F15667B00E5A276 /* MazeyPassagesTests.swift */; };
+		F1627A111F1B64D700B5B88B /* MazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1627A101F1B64D700B5B88B /* MazeView.swift */; };
 		F1D14ACF1F1663370088D46A /* BinaryTreeMaze.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D14ACE1F1663370088D46A /* BinaryTreeMaze.swift */; };
 		F1D14AD21F1663620088D46A /* MazeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D14AD11F1663620088D46A /* MazeTests.swift */; };
 		F1D14AD41F166A400088D46A /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D14AD31F166A400088D46A /* Cell.swift */; };
@@ -31,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F10703181F1723E700490A29 /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
+		F107031A1F172F3D00490A29 /* MazeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGenerator.swift; sourceTree = "<group>"; };
 		F143A9C71F15667A00E5A276 /* MazeyPassages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeyPassages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F143A9CA1F15667A00E5A276 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F143A9CC1F15667A00E5A276 /* MazeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +46,7 @@
 		F143A9DB1F15667B00E5A276 /* MazeyPassagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazeyPassagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F143A9DF1F15667B00E5A276 /* MazeyPassagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeyPassagesTests.swift; sourceTree = "<group>"; };
 		F143A9E11F15667B00E5A276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1627A101F1B64D700B5B88B /* MazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeView.swift; sourceTree = "<group>"; };
 		F1D14ACE1F1663370088D46A /* BinaryTreeMaze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTreeMaze.swift; sourceTree = "<group>"; };
 		F1D14AD11F1663620088D46A /* MazeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeTests.swift; sourceTree = "<group>"; };
 		F1D14AD31F166A400088D46A /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
@@ -111,9 +117,12 @@
 			isa = PBXGroup;
 			children = (
 				F143A9CC1F15667A00E5A276 /* MazeViewController.swift */,
-				F1D14ACE1F1663370088D46A /* BinaryTreeMaze.swift */,
 				F1D14AD31F166A400088D46A /* Cell.swift */,
+				F10703181F1723E700490A29 /* Maze.swift */,
+				F1D14ACE1F1663370088D46A /* BinaryTreeMaze.swift */,
 				F1D14AD91F16CD930088D46A /* SideWinderMaze.swift */,
+				F107031A1F172F3D00490A29 /* MazeGenerator.swift */,
+				F1627A101F1B64D700B5B88B /* MazeView.swift */,
 			);
 			path = "Maze MVC";
 			sourceTree = "<group>";
@@ -229,7 +238,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F143A9CD1F15667A00E5A276 /* MazeViewController.swift in Sources */,
+				F1627A111F1B64D700B5B88B /* MazeView.swift in Sources */,
 				F1D14AD41F166A400088D46A /* Cell.swift in Sources */,
+				F107031B1F172F3D00490A29 /* MazeGenerator.swift in Sources */,
+				F10703191F1723E700490A29 /* Maze.swift in Sources */,
 				F1D14ADA1F16CD930088D46A /* SideWinderMaze.swift in Sources */,
 				F143A9CB1F15667A00E5A276 /* AppDelegate.swift in Sources */,
 				F1D14ACF1F1663370088D46A /* BinaryTreeMaze.swift in Sources */,

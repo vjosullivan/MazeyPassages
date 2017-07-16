@@ -10,14 +10,16 @@ import UIKit
 
 class MazeViewController: UIViewController {
 
+    @IBOutlet weak var mazeView: MazeView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let maze1 = Maze(rows: 40, cols: 40, generator: BinaryTreeMaze())
+        print(maze1.description)
+        mazeView.maze = maze1
+        let maze2 = Maze(rows: 10, cols: 10, generator: SideWinderMaze())
+        print(maze2.description)
     }
 }
 
