@@ -17,57 +17,59 @@ class MazeView: UIView {
     }
 
     override func draw(_ rect: CGRect) {
-        let lineWidth: CGFloat = 1.0
+        let lineWidth: CGFloat = 16.0
         guard let maze = maze else { return }
-        let mazeWidth = min(bounds.width, bounds.height)
-        let cellSize = mazeWidth / CGFloat(max(maze.rows, maze.cols))
+        let mazeWidth = min(bounds.width, bounds.height) - lineWidth
+        let cellSize = (mazeWidth - lineWidth) / CGFloat(max(maze.rows, maze.cols))
+        let minX = lineWidth / 2.0
+        let minY = lineWidth / 2.0
+        let maxX = mazeWidth + lineWidth / 2.0
+        let maxY = mazeWidth + lineWidth / 2.0
         backgroundColor = UIColor.lightGray
         let wallColor = UIColor.darkGray
 
-        let border = UIBezierPath()
-        border.lineJoinStyle = .round
-        border.lineCapStyle = .round
-        border.lineWidth = 2 * lineWidth
-        border.move(to: CGPoint(x: 0, y: 0))
-        border.addLine(to: CGPoint(x: bounds.width, y: 0))
-        border.addLine(to: CGPoint(x: bounds.width, y: bounds.height))
-        border.addLine(to: CGPoint(x: 0, y: bounds.height))
-        border.addLine(to: CGPoint(x: 0, y: 0))
-        border.close()
-        wallColor.set()
-        border.stroke()
+        drawBorder(lineWidth, wallColor)
 
         for r in 0..<maze.rows {
             for c in 0..<maze.cols {
-                let leftX   = CGFloat(c) * cellSize
-                let rightX  = leftX + cellSize
-                let topY    = CGFloat(r) * cellSize
-                let bottomY = topY + cellSize
+                let leftX   = minX + CGFloat(c) * cellSize
+                let rightX  = minX + leftX + cellSize
+                let topY    = minY + CGFloat(r) * cellSize
+                let bottomY = minY + topY + cellSize
 
                 let cell = maze.cell(row: r, col: c)
-                if !cell.isLinked(to: cell.north) {
-                    let aPath = UIBezierPath()
-                    aPath.lineWidth = lineWidth
-                    aPath.lineJoinStyle = .round
-
+                let aPath = UIBezierPath()
+                aPath.lineWidth = lineWidth
+                aPath.lineJoinStyle = .round
+                if cell.isLinked(to: cell.north) {
+                    aPath.move(to: CGPoint(x: rightX, y: topY))
+                } else {
                     aPath.move(to: CGPoint(x: leftX, y: topY))
                     aPath.addLine(to: CGPoint(x: rightX, y: topY))
-                    aPath.close()
-                    UIColor.red.set()
-                    aPath.stroke()
                 }
                 if !cell.isLinked(to: cell.east) {
-                    let aPath = UIBezierPath()
-                    aPath.lineWidth = lineWidth
-                    aPath.lineJoinStyle = .round
-                    aPath.move(to: CGPoint(x: rightX, y: topY))
                     aPath.addLine(to: CGPoint(x: rightX, y: bottomY))
-                    aPath.close()
-                    UIColor.red.set()
-                    aPath.stroke()
                 }
+                aPath.close()
+                wallColor.set()
+                aPath.stroke()
             }
         }
     }
     
+    fileprivate func drawBorder(_ lineWidth: CGFloat, _ wallColor: UIColor) {
+        let border = UIBezierPath()
+        border.lineJoinStyle = .round
+        border.lineCapStyle = .round
+        border.lineWidth = lineWidth
+        let offset = lineWidth / 2.0
+        border.move(to: CGPoint(x: offset, y: offset))
+        border.addLine(to: CGPoint(x: bounds.width - offset, y: offset + 0))
+        border.addLine(to: CGPoint(x: bounds.width - offset, y: bounds.height - offset))
+        border.addLine(to: CGPoint(x: offset, y: bounds.height - offset))
+        border.addLine(to: CGPoint(x: offset, y: offset))
+        border.close()
+        UIColor.red.set()
+        border.stroke()
+    }
 }
