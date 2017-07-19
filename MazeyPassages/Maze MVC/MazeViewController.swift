@@ -16,7 +16,10 @@ class MazeViewController: UIViewController {
         super.viewDidLoad()
 
         //let maze = Maze(rows: 20, cols: 20, generator: BinaryTreeMaze())
-        let maze = Maze(rows: 40, cols: 40, generator: SideWinderMaze())
+        let maze = DistanceMaze(rows: 6, cols: 6, generator: SideWinderMaze())
+        let startCell = maze.cell(row: 0, col: 0)
+        let distances = startCell.fetchDistances()
+        maze.distances = distances
         print(maze.description)
         mazeView.maze = maze
     }

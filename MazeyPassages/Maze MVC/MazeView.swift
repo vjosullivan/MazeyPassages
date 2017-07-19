@@ -17,7 +17,7 @@ class MazeView: UIView {
     }
 
     override func draw(_ rect: CGRect) {
-        let lineWidth: CGFloat = 2.0
+        let lineWidth: CGFloat = 6.0
         guard let maze = maze else { return }
         let mazeWidth = min(bounds.width, bounds.height) //- lineWidth
         let cellSize = (mazeWidth - lineWidth) / CGFloat(max(maze.rows, maze.cols))
@@ -25,10 +25,25 @@ class MazeView: UIView {
         let minY = lineWidth / 2.0
         backgroundColor = UIColor.lightGray
         let wallColor = UIColor.darkGray
-        wallColor.set()
+        wallColor.setStroke()
+        UIColor(red: 0.5, green: 0, blue: 0, alpha: 1.0).setFill()
 
+        for r in 0..<maze.rows {
+            for c in 0..<maze.cols {
+                let leftX   = minX + CGFloat(c) * cellSize
+                let rightX  = leftX + cellSize
+                let topY    = minY + CGFloat(r) * cellSize
+                let bottomY = topY + cellSize
+
+                let room = UIBezierPath()
+                room.move(to: CGPoint(x: leftX, y: topY))
+                room.addLine(to: CGPoint(x: rightX, y: topY))
+                room.addLine(to: CGPoint(x: rightX, y: bottomY))
+                room.addLine(to: CGPoint(x: leftX, y: bottomY))
+                room.fill()
+            }
+        }
         drawBorder(lineWidth)
-
         for r in 0..<maze.rows {
             for c in 0..<maze.cols {
                 let leftX   = minX + CGFloat(c) * cellSize
@@ -51,7 +66,6 @@ class MazeView: UIView {
                 } else {
                     wall.addLine(to: CGPoint(x: rightX, y: bottomY))
                 }
-                //wall.close()
                 wall.stroke()
             }
         }

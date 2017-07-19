@@ -29,7 +29,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.8666666666666667" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="zDX-Fj-VUa" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" priority="750" id="T7J-Xb-DLO"/>
                             <constraint firstItem="zDX-Fj-VUa" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" priority="750" id="ViL-7n-43j"/>

@@ -8,9 +8,10 @@
 
 import Foundation
 
+// Records the distance to all other cells in the Maze from the root cell.
 class Distances {
 
-    let root: Cell
+    private let root: Cell
     var cells = [Cell: Int]()
 
     init(root: Cell) {
@@ -18,7 +19,11 @@ class Distances {
         cells[root] = 0
     }
 
-    func distance(to cell: Cell) -> Int {
-        return cells[cell] ?? 99
+    func distance(to cell: Cell) -> Int? {
+        return cells[cell]
+    }
+
+    func doesNotContain(_ cell: Cell) -> Bool {
+        return cells[cell] == nil
     }
 }

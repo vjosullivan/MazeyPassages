@@ -16,7 +16,7 @@ class Maze {
     let cols: Int
     
     var cells = [[Cell]]()
-    
+
     // MARK: - Public functions.
     
     init(rows: Int, cols: Int, generator: MazeGenerator) {
@@ -66,19 +66,20 @@ class Maze {
         cells[row][col] = newValue
     }
 
-    public func drawMaze(cellSize: Int = 50) {
-        
+    func contentsOf(_ cell: Cell) -> String {
+        return " "
     }
 }
 
 extension Maze: CustomStringConvertible {
+
     var description: String {
         var output = "+" + String(repeating: "---+", count: cols) + "\n"
         for rowOfCells in cells {
             var top    = "|"
             var bottom = "+"
             for cell in rowOfCells {
-                let body = "   "
+                let body = " \(contentsOf(cell)) "
                 let eastBoundary = cell.isLinked(to: cell.east) ? " " : "|"
                 top += body + eastBoundary
                 let southBoundary = cell.isLinked(to: cell.south) ? "   " : "---"

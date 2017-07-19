@@ -23,6 +23,8 @@ class Cell {
     // MARK: - Private properties.
 
     private(set) var links = [Cell]()
+    lazy var distances = Distances(root: self)
+    lazy var frontier = [self]
 
     // MARK: - Public functions.
 
@@ -54,6 +56,22 @@ class Cell {
     public func isLinked(to otherCell: Cell?) -> Bool {
         guard let cell = otherCell else { return false }
         return links.contains(cell)
+    }
+
+    public func fetchDistances() -> Distances {
+        while !frontier.isEmpty {
+            var newFrontier = [Cell]()
+            for cell in frontier {
+                for linkedCell in cell.links {
+                    if distances.doesNotContain(linkedCell) {
+                        distances.cells[linkedCell] = distances.cells[cell]! + 1
+                        newFrontier.append(linkedCell)
+                    }
+                }
+            }
+            frontier = newFrontier
+        }
+        return distances
     }
 }
 

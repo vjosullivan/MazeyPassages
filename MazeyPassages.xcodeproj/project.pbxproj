@@ -22,6 +22,7 @@
 		F1D14AD41F166A400088D46A /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D14AD31F166A400088D46A /* Cell.swift */; };
 		F1D14AD61F166A5B0088D46A /* CellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D14AD51F166A5B0088D46A /* CellTests.swift */; };
 		F1D14ADA1F16CD930088D46A /* SideWinderMaze.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D14AD91F16CD930088D46A /* SideWinderMaze.swift */; };
+		F1D6AA521F1F69DA00D2F058 /* DistanceMaze.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6AA511F1F69DA00D2F058 /* DistanceMaze.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		F1D14AD31F166A400088D46A /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		F1D14AD51F166A5B0088D46A /* CellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTests.swift; sourceTree = "<group>"; };
 		F1D14AD91F16CD930088D46A /* SideWinderMaze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideWinderMaze.swift; sourceTree = "<group>"; };
+		F1D6AA511F1F69DA00D2F058 /* DistanceMaze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceMaze.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				F107031A1F172F3D00490A29 /* MazeGenerator.swift */,
 				F1627A101F1B64D700B5B88B /* MazeView.swift */,
 				34B8FC361F1E26C600D166BC /* Distances.swift */,
+				F1D6AA511F1F69DA00D2F058 /* DistanceMaze.swift */,
 			);
 			path = "Maze MVC";
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				F10703191F1723E700490A29 /* Maze.swift in Sources */,
 				F1D14ADA1F16CD930088D46A /* SideWinderMaze.swift in Sources */,
 				F143A9CB1F15667A00E5A276 /* AppDelegate.swift in Sources */,
+				F1D6AA521F1F69DA00D2F058 /* DistanceMaze.swift in Sources */,
 				F1D14ACF1F1663370088D46A /* BinaryTreeMaze.swift in Sources */,
 				34B8FC371F1E26C600D166BC /* Distances.swift in Sources */,
 			);
