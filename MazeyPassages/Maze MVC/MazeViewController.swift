@@ -15,11 +15,10 @@ class MazeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let maze1 = Maze(rows: 40, cols: 40, generator: BinaryTreeMaze())
-        print(maze1.description)
-        mazeView.maze = maze1
-        let maze2 = Maze(rows: 10, cols: 10, generator: SideWinderMaze())
-        print(maze2.description)
+        //let maze = Maze(rows: 20, cols: 20, generator: BinaryTreeMaze())
+        let maze = Maze(rows: 40, cols: 40, generator: SideWinderMaze())
+        print(maze.description)
+        mazeView.maze = maze
     }
 }
 

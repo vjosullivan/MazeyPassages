@@ -17,7 +17,7 @@ class SideWinderMaze: MazeGenerator {
             let atEasternBoundary  = (run.last?.east == nil)
             let atNorthernBoundary = (run.last?.north == nil)
             return atEasternBoundary ||
-                (!atNorthernBoundary && (Int(arc4random_uniform(UInt32(4))) == 0))
+                (!atNorthernBoundary && (Int(arc4random_uniform(UInt32(3))) == 0))
         }
 
         for rowOfCells in cells {

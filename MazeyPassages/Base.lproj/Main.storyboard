@@ -22,21 +22,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDX-Fj-VUa" customClass="MazeView" customModule="MazeyPassages" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="146" width="375" height="375"/>
+                                <rect key="frame" x="8" y="154" width="359" height="359"/>
                                 <color key="backgroundColor" red="0.4549019608" green="0.75294117650000003" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zDX-Fj-VUa" secondAttribute="height" multiplier="1:1" id="kYg-Zw-iOa"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zDX-Fj-VUa" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" priority="750" id="T7J-Xb-DLO"/>
                             <constraint firstItem="zDX-Fj-VUa" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" priority="750" id="ViL-7n-43j"/>
                             <constraint firstItem="zDX-Fj-VUa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eYv-BC-3bl"/>
-                            <constraint firstItem="zDX-Fj-VUa" firstAttribute="width" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="width" id="s2z-0R-Vos"/>
+                            <constraint firstItem="zDX-Fj-VUa" firstAttribute="width" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-16" id="s2z-0R-Vos"/>
                             <constraint firstItem="zDX-Fj-VUa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uxF-sc-5xN"/>
-                            <constraint firstItem="zDX-Fj-VUa" firstAttribute="height" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" id="zb7-kr-8UD"/>
+                            <constraint firstItem="zDX-Fj-VUa" firstAttribute="height" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" constant="-16" id="zb7-kr-8UD"/>
                         </constraints>
                     </view>
                     <connections>

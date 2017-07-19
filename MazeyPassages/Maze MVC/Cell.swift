@@ -62,3 +62,9 @@ extension Cell: Equatable {
         return lhs.row == rhs.row && lhs.col == rhs.col
     }
 }
+
+extension Cell: Hashable {
+    var hashValue: Int {
+        return 991 * row + 997 * col
+    }
+}
