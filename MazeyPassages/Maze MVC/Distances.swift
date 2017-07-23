@@ -26,4 +26,21 @@ class Distances {
     func doesNotContain(_ cell: Cell) -> Bool {
         return cells[cell] == nil
     }
+
+    func path(to cell: Cell) -> Distances {
+        var currentCell = cell
+        let breadcrumbs = Distances(root: root)
+        breadcrumbs.cells[currentCell] = cells[currentCell]
+
+        while currentCell == root {
+            for neighbour in currentCell.links {
+                if cells[neighbour]! < cells[currentCell]! {
+                    breadcrumbs.cells[neighbour] = cells[neighbour]
+                    currentCell = neighbour
+                }
+            }
+        }
+
+        return breadcrumbs
+    }
 }
