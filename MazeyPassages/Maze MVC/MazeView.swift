@@ -21,13 +21,13 @@ class MazeView: UIView {
             print("CLONK!!!")
             return
         }
-        let lineWidth: CGFloat = 2.0
+        let lineWidth: CGFloat = 4.0
         guard let maze = maze as? DistanceMaze else { return }
         let mazeWidth = min(bounds.width, bounds.height) //- lineWidth
         let cellSize = (mazeWidth - lineWidth) / CGFloat(max(maze.rows, maze.cols))
         let minX = lineWidth / 2.0
         let minY = lineWidth / 2.0
-        backgroundColor = UIColor.lightGray
+        backgroundColor = UIColor.clear
         let wallColor = UIColor.darkGray
         wallColor.setStroke()
         UIColor(red: 0.6, green: 0.2, blue: 0.2, alpha: 1.0).setFill()
@@ -43,7 +43,7 @@ class MazeView: UIView {
                 if distance == 0 {
                     UIColor.yellow.setFill()
                 } else {
-                    let shade = max(CGFloat(distance) / CGFloat(maze.rows * maze.cols / 16), 0.0)
+                    let shade = max(CGFloat(distance) / CGFloat(4 * maze.rows), 0.0)
                     UIColor(red: 0.0, green: 1.0 - shade, blue: 0.0, alpha: 1.0).setFill()
                 }
                 let room = UIBezierPath()
@@ -52,10 +52,19 @@ class MazeView: UIView {
                 room.addLine(to: CGPoint(x: rightX, y: bottomY))
                 room.addLine(to: CGPoint(x: leftX, y: bottomY))
                 room.fill()
-
-                let wall = UIBezierPath()
+            }
+        }
+        for r in 0..<maze.rows {
+            for c in 0..<maze.cols {
+                let leftX   = minX + CGFloat(c) * cellSize
+                let rightX  = leftX + cellSize
+                let topY    = minY + CGFloat(r) * cellSize
+                let bottomY = topY + cellSize
+                let cell = maze.cell(row: r, col: c)
+               let wall = UIBezierPath()
                 wall.lineWidth = lineWidth
-                wall.lineCapStyle  = .square
+                wall.lineJoinStyle = .round
+                wall.lineCapStyle  = .round
                 if cell.isLinked(to: cell.north) {
                     wall.move(to: CGPoint(x: rightX, y: topY))
                 } else {
@@ -70,15 +79,15 @@ class MazeView: UIView {
                 wall.stroke()
             }
         }
-        drawBorder(lineWidth)
+        drawBorder(width: lineWidth, in: rect)
     }
     
-    fileprivate func drawBorder(_ lineWidth: CGFloat) {
-        let border = UIBezierPath()
-        border.lineJoinStyle = .miter
-        border.lineCapStyle = .square
-        border.lineWidth = lineWidth
-        let offset = lineWidth / 2.0
+    fileprivate func drawBorder(width: CGFloat, in rect: CGRect) {
+        let border = UIBezierPath(rect: rect)
+        border.lineJoinStyle = .round
+        border.lineCapStyle = .round
+        border.lineWidth = width
+        let offset = width / 2.0
         border.move(to: CGPoint(x: offset, y: offset))
         border.addLine(to: CGPoint(x: bounds.width - offset, y: offset + 0))
         border.addLine(to: CGPoint(x: bounds.width - offset, y: bounds.height - offset))

@@ -16,12 +16,18 @@ class MazeViewController: UIViewController {
         super.viewDidLoad()
 
         //let maze = Maze(rows: 20, cols: 20, generator: BinaryTreeMaze())
-        let maze = DistanceMaze(rows: 64, cols: 64, generator: SideWinderMaze())
-        let startCell = maze.cell(row: 31, col: 31)
+        let size = 17
+        let maze = DistanceMaze(rows: size, cols: size, generator: SideWinderMaze())
+        let startCell = maze.cell(row: size / 2, col: size / 2)
         let distances = startCell.fetchDistances()
         maze.distances = distances
         print(maze.description)
         mazeView.maze = maze
+        mazeView.setNeedsDisplay()
+
+        maze.distances = maze.distances?.path(to: maze.cell(row: size * 9 / 10, col: size * 9 / 10))
+        print("\nDistances")
+        print("---------\n")
+        print(maze.description)
     }
 }
-

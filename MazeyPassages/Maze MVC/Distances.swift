@@ -32,7 +32,7 @@ class Distances {
         let breadcrumbs = Distances(root: root)
         breadcrumbs.cells[currentCell] = cells[currentCell]
 
-        while currentCell == root {
+        while currentCell != root {
             for neighbour in currentCell.links {
                 if cells[neighbour]! < cells[currentCell]! {
                     breadcrumbs.cells[neighbour] = cells[neighbour]
