@@ -66,7 +66,7 @@ class Maze {
         cells[row][col] = newValue
     }
 
-    func contentsOf(_ cell: Cell) -> String {
+    public func contentsOf(_ cell: Cell) -> String {
         return " "
     }
 }

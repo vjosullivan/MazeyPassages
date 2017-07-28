@@ -18,14 +18,11 @@ class MazeViewController: UIViewController {
         //let maze = Maze(rows: 20, cols: 20, generator: BinaryTreeMaze())
         let size = 17
         let maze = DistanceMaze(rows: size, cols: size, generator: SideWinderMaze())
-        let startCell = maze.cell(row: size / 2, col: size / 2)
-        let distances = startCell.fetchDistances()
-        maze.distances = distances
         print(maze.description)
-        mazeView.maze = maze
-        mazeView.setNeedsDisplay()
 
-        maze.distances = maze.distances?.path(to: maze.cell(row: size * 9 / 10, col: size * 9 / 10))
+        maze.shortestPath(fromStart: (row: size * 9 / 10, col: size * 9 / 10), toExit: (row: size / 2, col: size / 2))
+        mazeView.maze = maze
+
         print("\nDistances")
         print("---------\n")
         print(maze.description)

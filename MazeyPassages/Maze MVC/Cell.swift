@@ -22,6 +22,7 @@ class Cell {
 
     // MARK: - Private properties.
 
+    /// A list of all the cells directly connected to this cell.
     private(set) var links = [Cell]()
     lazy var distances = Distances(root: self)
     lazy var frontier = [self]
@@ -58,13 +59,18 @@ class Cell {
         return links.contains(cell)
     }
 
+
+    /// Returns a table of distances of each cell in the maze from this cell.
+    ///
+    /// - Returns: A table of cell to cell distances for this cell.
+    ///
     public func fetchDistances() -> Distances {
         while !frontier.isEmpty {
             var newFrontier = [Cell]()
             for cell in frontier {
                 for linkedCell in cell.links {
                     if distances.doesNotContain(linkedCell) {
-                        distances.cells[linkedCell] = distances.cells[cell]! + 1
+                        distances.distanceToRoot[linkedCell] = distances.distanceToRoot[cell]! + 1
                         newFrontier.append(linkedCell)
                     }
                 }

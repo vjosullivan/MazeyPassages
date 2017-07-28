@@ -12,30 +12,30 @@ import Foundation
 class Distances {
 
     private let root: Cell
-    var cells = [Cell: Int]()
+    var distanceToRoot = [Cell: Int]()
 
     init(root: Cell) {
         self.root = root
-        cells[root] = 0
+        distanceToRoot[root] = 0
     }
 
     func distance(to cell: Cell) -> Int? {
-        return cells[cell]
+        return distanceToRoot[cell]
     }
 
     func doesNotContain(_ cell: Cell) -> Bool {
-        return cells[cell] == nil
+        return distanceToRoot[cell] == nil
     }
 
     func path(to cell: Cell) -> Distances {
         var currentCell = cell
         let breadcrumbs = Distances(root: root)
-        breadcrumbs.cells[currentCell] = cells[currentCell]
+        breadcrumbs.distanceToRoot[currentCell] = distanceToRoot[currentCell]
 
         while currentCell != root {
             for neighbour in currentCell.links {
-                if cells[neighbour]! < cells[currentCell]! {
-                    breadcrumbs.cells[neighbour] = cells[neighbour]
+                if distanceToRoot[neighbour]! < distanceToRoot[currentCell]! {
+                    breadcrumbs.distanceToRoot[neighbour] = distanceToRoot[neighbour]
                     currentCell = neighbour
                 }
             }
