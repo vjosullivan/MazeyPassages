@@ -25,6 +25,7 @@ class MazeView: UIView {
         guard let maze = maze as? DistanceMaze else { return }
         let mazeWidth = min(bounds.width, bounds.height) //- lineWidth
         let cellSize = (mazeWidth - lineWidth) / CGFloat(max(maze.rows, maze.cols))
+        let inset = 0.35 * cellSize
         let minX = lineWidth / 2.0
         let minY = lineWidth / 2.0
         backgroundColor = UIColor.clear
@@ -39,19 +40,36 @@ class MazeView: UIView {
                 let topY    = minY + CGFloat(r) * cellSize
                 let bottomY = topY + cellSize
                 let cell = maze.cell(row: r, col: c)
-                let distance = maze.distances?.distance(to: cell) ?? 0
-                if distance == 0 {
-                    UIColor.yellow.setFill()
-                } else {
-                    let shade = max(CGFloat(distance) / CGFloat(4 * maze.rows), 0.0)
-                    UIColor(red: 0.0, green: 1.0 - shade, blue: 0.0, alpha: 1.0).setFill()
+                let maxDistance = maze.distances!.furthestCell().distance
+                if let distance = maze.distances?.distance(to: cell) {
+                    if distance == 0 {
+                        print("A")
+                        UIColor.yellow.setFill()
+                    } else if distance == maxDistance {
+                        print("B")
+                        UIColor.red.setFill()
+                    } else {
+                        let shade = max(CGFloat(abs(distance)) / CGFloat(maxDistance), 0.0)
+                        UIColor(red: 0.0, green: 1.0 - shade, blue: 0.0, alpha: 1.0).setFill()
+                    }
+                    let room = UIBezierPath()
+                    room.move(to: CGPoint(x: leftX, y: topY))
+                    room.addLine(to: CGPoint(x: rightX, y: topY))
+                    room.addLine(to: CGPoint(x: rightX, y: bottomY))
+                    room.addLine(to: CGPoint(x: leftX, y: bottomY))
+                    room.fill()
+                    if distance < 0 {
+                        //let shade = max(CGFloat(-distance) / maxDistance, 0.0)
+                        UIColor.red.setFill()
+                        let room = UIBezierPath()
+                        room.move(to: CGPoint(x: leftX + inset, y: topY + inset))
+                        room.addLine(to: CGPoint(x: rightX - inset, y: topY + inset))
+                        room.addLine(to: CGPoint(x: rightX - inset, y: bottomY - inset))
+                        room.addLine(to: CGPoint(x: leftX + inset, y: bottomY - inset))
+                        room.fill()
+
+                    }
                 }
-                let room = UIBezierPath()
-                room.move(to: CGPoint(x: leftX, y: topY))
-                room.addLine(to: CGPoint(x: rightX, y: topY))
-                room.addLine(to: CGPoint(x: rightX, y: bottomY))
-                room.addLine(to: CGPoint(x: leftX, y: bottomY))
-                room.fill()
             }
         }
         for r in 0..<maze.rows {
@@ -61,7 +79,7 @@ class MazeView: UIView {
                 let topY    = minY + CGFloat(r) * cellSize
                 let bottomY = topY + cellSize
                 let cell = maze.cell(row: r, col: c)
-               let wall = UIBezierPath()
+                let wall = UIBezierPath()
                 wall.lineWidth = lineWidth
                 wall.lineJoinStyle = .round
                 wall.lineCapStyle  = .round

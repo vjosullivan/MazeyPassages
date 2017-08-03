@@ -64,12 +64,14 @@ class Cell {
     ///
     /// - Returns: A table of cell to cell distances for this cell.
     ///
-    public func fetchDistances() -> Distances {
+    public func fetchDistances() -> (distances: Distances, maxDistance: Int) {
+        var maxDistance = 0
         while !frontier.isEmpty {
             var newFrontier = [Cell]()
             for cell in frontier {
                 for linkedCell in cell.links {
                     if distances.doesNotContain(linkedCell) {
+                        maxDistance += 1
                         distances.distanceToRoot[linkedCell] = distances.distanceToRoot[cell]! + 1
                         newFrontier.append(linkedCell)
                     }
@@ -77,7 +79,7 @@ class Cell {
             }
             frontier = newFrontier
         }
-        return distances
+        return (distances: distances, maxDistance: maxDistance)
     }
 }
 

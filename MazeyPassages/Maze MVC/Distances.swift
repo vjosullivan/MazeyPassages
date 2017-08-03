@@ -43,4 +43,17 @@ class Distances {
 
         return breadcrumbs
     }
+
+    func furthestCell() -> (cell: Cell, distance: Int) {
+        var maxDistance = distanceToRoot.first!.value
+        var maxCell     = distanceToRoot.first!.key
+
+        for cell in distanceToRoot.keys {
+            if let newDistance = distanceToRoot[cell], newDistance > maxDistance {
+                maxDistance = newDistance
+                maxCell     = cell
+            }
+        }
+        return (cell: maxCell, distance: maxDistance)
+    }
 }

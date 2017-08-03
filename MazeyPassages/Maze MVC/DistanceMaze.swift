@@ -25,16 +25,25 @@ class DistanceMaze: Maze {
         }
     }
 
-    private func setExitAt(row: Int, col: Int) {
-        distances = cell(row: row, col: col).fetchDistances()
+    private func setExit(to cell: Cell) {
+        distances = cell.fetchDistances().distances
     }
 
-    private func shortestPathFrom(row: Int, col: Int) {
-        distances = distances?.path(to: cell(row: row, col: col))
+    private func shortestPathFrom(cell: Cell) {
+        let pathDistances = distances?.path(to: cell)
+        for (cell, distance) in pathDistances!.distanceToRoot {
+            distances?.distanceToRoot[cell] = -distance
+        }
     }
 
-    public func shortestPath(fromStart start: (row: Int, col: Int), toExit exit: (row: Int, col: Int)) {
-        setExitAt(row: exit.row, col: exit.col)
-        shortestPathFrom(row: start.row, col: start.col)
+    public func shortestPath(from start: Cell, to exit: Cell) {
+        setExit(to: exit)
+        shortestPathFrom(cell: cell(row: start.row, col: start.col))
+    }
+
+    public func longestPath() -> (start: Cell, end: Cell) {
+        let startCell = cells[0][0].fetchDistances().distances.furthestCell().cell
+        let endCell   = cells[startCell.row][startCell.col].fetchDistances().distances.furthestCell().cell
+        return (start: startCell, end: endCell)
     }
 }
