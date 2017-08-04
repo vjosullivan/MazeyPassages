@@ -15,8 +15,7 @@ class MazeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //let maze = Maze(rows: 20, cols: 20, generator: BinaryTreeMaze())
-        let size = 65
+        let size = 17
         let maze = DistanceMaze(rows: size, cols: size, generator: SideWinderMaze())
         print(maze.description)
 
